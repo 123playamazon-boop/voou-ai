@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Voou.ai — Seu companheiro de viagem</title>
+<meta name="description" content="Voou.ai monitora atrasos, cancelamentos e conexões perdidas com IA proprietária e recupera sua indenização sem burocracia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FFFFFF;
@@ -16,8 +17,6 @@
   --ink:#18181B;
   --ink-2:#27272A;
   --ink-3:#3F3F46;
-  --bg-dark:#1E2235;
-  --bg-dark-2:#252A40;
   --gray:#71717A;
   --gray-2:#A1A1AA;
   --gray-line:#E4E4E7;
@@ -28,21 +27,21 @@
   --success-soft:#D1FAE5;
   --danger:#DC2626;
   --danger-soft:#FEE2E2;
+  --bg-dark:#1E2235;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.6;
-  font-size:16px;
+  background:var(--bg);color:var(--ink);
+  line-height:1.6;font-size:16px;
   -webkit-font-smoothing:antialiased;
   font-feature-settings:'cv02','cv03','cv11';
 }
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+a{color:inherit;text-decoration:none;}
 
-/* ========== NAV ========== */
+/* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(255,255,255,.85);backdrop-filter:blur(20px);
@@ -52,74 +51,68 @@ nav{
   max-width:1200px;margin:0 auto;padding:18px 32px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.logo{font-weight:800;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.03em;}
 .logo span{color:var(--accent);}
 .nav-links{display:flex;gap:32px;align-items:center;}
-.nav-links a{font-size:14px;color:var(--ink-3);text-decoration:none;font-weight:500;}
+.nav-links a{font-size:14px;color:var(--ink-3);font-weight:500;}
 .nav-links a:hover{color:var(--ink);}
 .nav-cta{
-  background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:100px;
-  font-weight:600;font-size:14px;text-decoration:none;
-  transition:transform .15s ease;
+  background:var(--ink);color:white;padding:10px 18px;border-radius:100px;
+  font-weight:600;font-size:14px;
+  transition:transform .15s;
 }
 .nav-cta:hover{transform:scale(1.03);}
 
 .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
 .section{padding:120px 0;}
 
-/* ========== TYPOGRAPHY ========== */
-h1{font-weight:800;letter-spacing:-.025em;line-height:1.05;color:var(--ink);}
-h2{font-size:48px;font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--ink);}
+/* TYPOGRAPHY */
+h1{font-weight:800;letter-spacing:-.03em;line-height:1.05;}
+h2{font-size:54px;font-weight:700;letter-spacing:-.025em;line-height:1.1;}
 h2 .light{color:var(--gray);font-weight:500;}
 h2 .accent{color:var(--accent);}
-h3{font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.3;color:var(--ink);}
-p{font-size:16px;line-height:1.6;color:var(--ink-3);}
+h3{font-size:22px;font-weight:700;letter-spacing:-.015em;line-height:1.3;}
+p{font-size:16px;line-height:1.65;color:var(--ink-3);}
 .lead{font-size:19px;line-height:1.6;color:var(--ink-3);}
 
 .section-header{margin-bottom:64px;max-width:760px;}
 .section-header p{font-size:18px;color:var(--gray);line-height:1.6;margin-top:20px;}
 
 .eyebrow{
-  display:inline-block;font-size:12px;font-weight:600;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:16px;
 }
+.eyebrow::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:16px 26px;border-radius:12px;
-  font-weight:600;font-size:15px;text-decoration:none;
+  font-weight:600;font-size:15px;letter-spacing:-.01em;
   transition:all .15s ease;
 }
-.btn-primary{background:var(--ink);color:var(--bg);}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.12);}
-.btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--gray-line);}
+.btn-primary{
+  background:var(--ink);color:white;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--gray-line);}
 .btn-secondary:hover{border-color:var(--ink);}
+.btn-arrow{transition:transform .15s;}
+.btn:hover .btn-arrow{transform:translateX(4px);}
 
-/* ========== CHAPTER DIVIDERS ========== */
-.chapter{
-  padding:80px 32px 40px;background:var(--bg);
-  border-top:1px solid var(--gray-line);
-}
-.chapter-inner{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;gap:24px;
-}
-.chapter-num{
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:14px;font-weight:600;color:var(--accent);
-  letter-spacing:.05em;
-}
-.chapter-line{flex:1;height:1px;background:var(--gray-line);}
-.chapter-name{
-  font-size:14px;font-weight:600;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--gray);
-}
-
-/* ========== HERO ========== */
+/* HERO */
 .hero{
-  padding:140px 0 80px;background:var(--bg);
+  padding:160px 0 80px;
+  background:
+    radial-gradient(900px circle at 80% -10%, rgba(79,70,229,.08), transparent 50%),
+    radial-gradient(700px circle at 0% 50%, rgba(79,70,229,.04), transparent 50%);
 }
-.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center;}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;}
 .hero-tag{
   display:inline-flex;align-items:center;gap:8px;
   background:var(--accent-soft);color:var(--accent);
@@ -128,69 +121,90 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
   border:1px solid rgba(79,70,229,.15);
 }
 .hero-tag::before{
-  content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);animation:pulse 2s infinite;
 }
-.hero h1{font-size:72px;margin-bottom:28px;}
+.hero h1{font-size:64px;margin-bottom:24px;color:var(--ink);}
 .hero h1 .accent{color:var(--accent);font-style:italic;font-weight:700;}
-.hero p.lead{font-size:20px;color:var(--ink-3);max-width:520px;margin-bottom:32px;}
-.hero-trust{display:flex;gap:20px;margin-bottom:36px;font-size:14px;color:var(--ink-3);font-weight:500;flex-wrap:wrap;}
+.hero p.lead{font-size:20px;color:var(--ink-3);max-width:540px;margin-bottom:32px;}
+.hero-trust{
+  display:flex;gap:20px;margin-bottom:36px;font-size:14px;color:var(--ink-3);
+  font-weight:500;flex-wrap:wrap;
+}
 .hero-trust span{display:flex;align-items:center;gap:6px;}
 .hero-trust span::before{content:'✓';color:var(--success);font-weight:700;}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
 
-/* Phone mockup (hero & solution) */
-.phone-stage{display:flex;justify-content:center;align-items:center;position:relative;}
-.phone-stage::before{
-  content:'';position:absolute;width:480px;height:480px;
-  background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);
-  filter:blur(40px);z-index:0;
+/* HERO PHONE */
+.hero-visual{
+  position:relative;display:flex;justify-content:center;align-items:center;
+  height:600px;
 }
-.phone-stage img{
-  position:relative;z-index:1;max-width:100%;height:auto;
-  filter:drop-shadow(0 30px 60px rgba(0,0,0,.12));
+.hero-glow{
+  position:absolute;width:520px;height:520px;
+  background:radial-gradient(circle,rgba(79,70,229,.15),transparent 70%);
+  filter:blur(60px);z-index:0;
 }
-.phone{
-  position:relative;z-index:2;width:300px;
-  background:#0A0A0A;border-radius:44px;padding:8px;
-  box-shadow:0 40px 80px rgba(0,0,0,.12),0 20px 40px rgba(0,0,0,.06);
+.phone-display{
+  position:relative;z-index:2;
+  width:320px;border-radius:32px;overflow:hidden;background:white;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.04),
+    0 50px 100px rgba(0,0,0,.12),
+    0 25px 50px rgba(0,0,0,.06);
 }
-.phone-notch{
-  background:#0A0A0A;width:110px;height:26px;border-radius:0 0 18px 18px;
-  margin:0 auto;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:3;
-}
-.phone-screen{
-  background:var(--bg);border-radius:36px;padding:50px 22px 28px;min-height:560px;
-}
-.phone-status{display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:20px;color:var(--ink);}
-.phone-app-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
-.phone-greeting{font-size:13px;color:var(--gray);font-weight:500;line-height:1.4;}
-.phone-greeting strong{color:var(--ink);font-weight:700;}
-.phone-avatar{
-  width:34px;height:34px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--accent-deep));
-}
-.phone-title{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:18px;}
-.flight-card{
-  background:var(--bg);border:1px solid var(--gray-line);
-  border-radius:14px;padding:16px;margin-bottom:10px;
-}
-.flight-card-row{display:flex;justify-content:space-between;align-items:center;}
-.flight-route{display:flex;align-items:center;gap:8px;}
-.flight-airport{font-size:17px;font-weight:800;letter-spacing:-.02em;}
-.flight-arrow{color:var(--gray);font-size:13px;}
-.flight-status{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--success);}
-.flight-status::before{content:'';width:6px;height:6px;background:var(--success);border-radius:50%;}
-.flight-meta{font-size:12px;color:var(--gray);margin-top:5px;}
-.flight-airline{font-size:12px;font-weight:600;color:var(--ink);}
-.add-flight-btn{
-  width:100%;background:var(--accent);color:white;padding:13px;border-radius:10px;border:none;
-  font-weight:600;font-size:13px;margin-top:6px;cursor:pointer;font-family:inherit;
-}
+.phone-display img{width:100%;height:auto;display:block;}
 
-/* ========== TRUST STRIP ========== */
+.float-card{
+  position:absolute;z-index:3;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--gray-line);
+  border-radius:14px;padding:14px 16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.08);
+  animation:float-anim 4s ease-in-out infinite;
+}
+@keyframes float-anim{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+.float-card-1{top:8%;left:-8%;width:230px;animation-delay:0s;}
+.float-card-2{top:42%;right:-8%;width:200px;animation-delay:1.5s;}
+.float-card-3{bottom:8%;left:-2%;width:240px;animation-delay:2.5s;}
+
+.fc-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;font-weight:600;color:var(--accent);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;
+}
+.fc-tag::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);animation:pulse 1.5s infinite;
+}
+.fc-tag.green{color:var(--success);}
+.fc-tag.green::before{background:var(--success);}
+.fc-headline{font-size:14px;color:var(--ink);font-weight:600;line-height:1.3;}
+.fc-meta{font-size:12px;color:var(--gray);margin-top:6px;}
+.fc-amount{
+  font-size:22px;color:var(--success);font-weight:700;
+  letter-spacing:-.02em;line-height:1;margin-top:4px;font-family:'JetBrains Mono',monospace;
+}
+.ai-bar{margin-top:8px;display:flex;gap:3px;align-items:flex-end;height:24px;}
+.ai-bar span{flex:1;background:var(--accent);border-radius:2px;animation:bar-anim 1.2s ease-in-out infinite;}
+.ai-bar span:nth-child(1){animation-delay:0s;height:40%;}
+.ai-bar span:nth-child(2){animation-delay:.1s;height:80%;}
+.ai-bar span:nth-child(3){animation-delay:.2s;height:60%;}
+.ai-bar span:nth-child(4){animation-delay:.3s;height:100%;}
+.ai-bar span:nth-child(5){animation-delay:.4s;height:50%;}
+.ai-bar span:nth-child(6){animation-delay:.5s;height:75%;}
+.ai-bar span:nth-child(7){animation-delay:.6s;height:35%;}
+@keyframes bar-anim{0%,100%{opacity:.3;transform:scaleY(.6);}50%{opacity:1;transform:scaleY(1);}}
+
+/* TRUST STRIP */
 .trustpilot-strip{
-  padding:20px 0;background:var(--bg-soft);border-bottom:1px solid var(--gray-line);
-  border-top:1px solid var(--gray-line);
+  padding:20px 0;background:var(--bg-soft);
+  border-top:1px solid var(--gray-line);border-bottom:1px solid var(--gray-line);
 }
 .trustpilot-inner{
   max-width:1200px;margin:0 auto;padding:0 32px;
@@ -200,262 +214,182 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
 .tp-excellent{font-weight:700;color:var(--ink);font-size:14px;}
 .tp-stars{display:inline-flex;gap:2px;background:var(--success);padding:3px 6px;border-radius:4px;}
 .tp-stars span{color:white;font-size:13px;}
-.tp-rating{font-weight:700;color:var(--ink);}
-.tp-count{color:var(--gray);text-decoration:underline;}
 
-/* ========== CHAPTER 01 — DOR ========== */
+/* BIG STAT */
 .section.big-stat{padding:140px 0;}
-.big-stat-grid{
-  display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:center;
-}
+.big-stat-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:center;}
 .big-stat .number{
   font-size:200px;line-height:.85;font-weight:800;letter-spacing:-.05em;
   color:var(--ink);margin-bottom:24px;
 }
-.big-stat .label{font-size:24px;font-weight:600;max-width:520px;margin-bottom:16px;letter-spacing:-.01em;color:var(--ink);}
+.big-stat .label{font-size:24px;font-weight:600;max-width:520px;margin-bottom:16px;letter-spacing:-.01em;}
 .big-stat .label em{color:var(--accent);font-style:normal;font-weight:700;}
 .big-stat p.sub{font-size:17px;color:var(--gray);max-width:520px;}
-.big-stat-image{
-  position:relative;display:flex;justify-content:center;align-items:center;
-}
+.big-stat-image{position:relative;display:flex;justify-content:center;align-items:center;}
 .big-stat-image::before{
   content:'';position:absolute;width:380px;height:380px;
   background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);
-  filter:blur(40px);z-index:0;
+  filter:blur(40px);
 }
 .big-stat-image img{
-  position:relative;z-index:1;max-width:100%;height:auto;
+  position:relative;max-width:100%;height:auto;
   filter:drop-shadow(0 30px 60px rgba(0,0,0,.12));
 }
 
+/* PAIN */
 .section.pain{background:var(--bg-soft);}
 .pain-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .pain-card{
   background:var(--bg);border:1px solid var(--gray-line);
   border-radius:18px;overflow:hidden;
-  transition:transform .2s ease;
   display:flex;flex-direction:column;
+  transition:transform .2s;
 }
 .pain-card:hover{transform:translateY(-2px);}
 .pain-card-image{
   width:100%;height:200px;background:var(--bg-2);
-  background-size:cover;background-position:center;
-  position:relative;
-}
-.pain-card-image::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.15) 100%);
+  background-size:cover;background-position:center;position:relative;
 }
 .pain-card-content{padding:28px 28px 32px;}
 .pain-emoji{font-size:28px;margin-bottom:14px;}
 .pain-card h3{margin-bottom:10px;}
 .pain-card p{font-size:15px;color:var(--gray);}
 
-/* Atmosphere image strip */
-.atmosphere-strip{
-  width:100%;height:280px;
-  background-image:url('images/atmosphere.jpeg');
-  background-size:cover;background-position:center;
-  background-color:var(--bg-2);
-  margin:0;
+/* RECOVERY TABLE */
+.section.recovery{background:var(--bg);}
+.table-wrap{
+  background:var(--bg);
+  border:1px solid var(--gray-line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.04);
 }
-
-/* Monitoring with background image */
-.section.monitoring{
-  background:var(--bg-2);text-align:center;padding:140px 0;
-  background-image:linear-gradient(180deg,rgba(245,245,244,.85),rgba(245,245,244,.92)),url('images/atmosphere.jpeg');
-  background-size:cover;background-position:center;
-  background-attachment:fixed;
+.table-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 28px;border-bottom:1px solid var(--gray-line);
+  background:var(--bg-soft);
 }
+.table-header-left{display:flex;align-items:center;gap:14px;}
+.table-live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--success);
+  box-shadow:0 0 0 3px var(--success-soft);
+  animation:pulse 1.5s infinite;
+}
+.table-live-label{font-size:13px;color:var(--gray);font-weight:500;}
+.table-live-label strong{color:var(--success);font-weight:600;}
+.table-total{display:flex;flex-direction:column;align-items:flex-end;}
+.table-total-label{font-size:11px;color:var(--gray);font-weight:500;letter-spacing:.04em;text-transform:uppercase;}
+.table-total-amount{font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em;font-family:'JetBrains Mono',monospace;margin-top:2px;}
 
-/* Solution image / video */
+.recovery-table{width:100%;border-collapse:collapse;}
+.recovery-table thead{background:var(--bg-soft);}
+.recovery-table th{
+  padding:14px 24px;text-align:left;
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gray);border-bottom:1px solid var(--gray-line);
+}
+.recovery-table th.right{text-align:right;}
+.recovery-table tbody tr{
+  border-bottom:1px solid var(--gray-line);
+  transition:background .15s;
+}
+.recovery-table tbody tr:hover{background:var(--bg-soft);}
+.recovery-table tbody tr:last-child{border-bottom:none;}
+.recovery-table td{padding:18px 24px;font-size:14px;color:var(--ink-2);vertical-align:middle;}
+.recovery-table td.right{text-align:right;}
+.tbl-airline{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ink);}
+.tbl-airline-dot{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,#EEF2FF,#DBEAFE);
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.tbl-route{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gray);}
+.tbl-amount{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--success);font-size:15px;}
+.tbl-amount-arrow{color:var(--success);margin-left:4px;}
+.tbl-status{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  color:var(--success);background:var(--success-soft);
+  padding:4px 10px;border-radius:6px;letter-spacing:.06em;
+}
+.tbl-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--success);}
+.tbl-time{font-size:13px;color:var(--gray);}
+.table-footer{
+  padding:18px 28px;border-top:1px solid var(--gray-line);
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--bg-soft);font-size:13px;color:var(--gray);
+}
+.table-footer-link{color:var(--accent);font-weight:600;}
+
+/* SOLUTION (DARK) */
+.section.solution{
+  background:var(--bg-dark);color:white;
+  border-radius:32px;margin:0 32px;
+}
+.solution .wrap{padding:0 48px;}
+.solution-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
+.solution .eyebrow{color:#A5B4FC;}
+.solution h2{color:white;}
+.solution h2 .light{color:#94A3B8;}
+.solution h2 .accent{color:#A5B4FC;}
+.solution p.lead{font-size:18px;line-height:1.7;color:#CBD5E1;max-width:480px;margin-top:24px;}
 .solution-image-wrap{
   border-radius:32px;overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,.12),0 12px 32px rgba(0,0,0,.06);
-  position:relative;
-  background:#0A0A0A;
-  max-width:380px;
-  margin:0 auto;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  background:#0A0A0A;max-width:380px;margin:0 auto;position:relative;
 }
-.solution-image-wrap img,
-.solution-image-wrap video{
-  width:100%;height:auto;display:block;
-}
+.solution-image-wrap video{width:100%;height:auto;display:block;}
 .video-overlay-tag{
   position:absolute;top:16px;left:16px;
   background:rgba(0,0,0,.5);backdrop-filter:blur(8px);
   color:white;font-size:11px;font-weight:600;
   padding:6px 12px;border-radius:100px;letter-spacing:.04em;
-  display:flex;align-items:center;gap:6px;
-  z-index:2;
+  display:flex;align-items:center;gap:6px;z-index:2;
 }
 .video-overlay-tag::before{
   content:'';width:6px;height:6px;background:#EF4444;border-radius:50%;
-  animation:pulse-tag 2s infinite;
-}
-@keyframes pulse-tag{0%,100%{opacity:1;}50%{opacity:.4;}}
-
-/* Payoff with background */
-.section.payoff{
-  text-align:center;background:var(--bg);padding:140px 0;
-  background-image:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.96)),url('images/payoff.jpeg');
-  background-size:cover;background-position:center;
+  animation:pulse 2s infinite;
 }
 
-.section.disruption{background:var(--bg);}
-.disruption-cards{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;
-}
-.disruption-card{
-  background:var(--bg-soft);border:1px solid var(--gray-line);
-  border-radius:18px;padding:28px 24px;
-  transition:transform .25s;
-}
-.disruption-card:hover{transform:translateY(-3px);}
-.disruption-icon-box{
-  width:42px;height:42px;border-radius:10px;background:var(--accent-soft);
-  display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;
-}
-.disruption-card h3{font-size:18px;font-weight:700;margin-bottom:10px;}
-.disruption-card p{font-size:13px;color:var(--gray);margin-bottom:16px;}
-.disruption-card p strong{color:var(--ink);}
-.disruption-stat{
-  border-top:1px solid var(--gray-line);padding-top:14px;font-size:12px;
-  color:var(--ink-2);font-weight:500;
-}
-.disruption-stat strong{color:var(--accent);}
-
-/* ========== CHAPTER 02 — SOLUÇÃO ========== */
-.section.solution{
-  background:var(--bg-2);color:var(--ink);
-  border-radius:32px;margin:0 32px;
-}
-.solution .wrap{padding:0 48px;}
-.solution-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
-.solution .eyebrow{color:var(--accent);}
-.solution h2{color:var(--ink);}
-.solution h2 .light{color:var(--gray);}
-.solution h2 .accent{color:var(--accent);}
-.solution p.lead{font-size:18px;line-height:1.7;color:var(--ink-3);max-width:480px;margin-top:24px;}
-
-.phone-screen.dark-mockup{background:var(--bg-dark);color:white;}
-.phone-screen.dark-mockup .phone-status{color:white;}
-.phone-screen.dark-mockup .phone-greeting{color:#A1A1AA;}
-.phone-screen.dark-mockup .phone-greeting strong{color:white;}
-.phone-screen.dark-mockup .phone-title{color:white;}
-.phone-screen.dark-mockup .flight-card{background:var(--bg-dark-2);border:1px solid rgba(255,255,255,.08);}
-.phone-screen.dark-mockup .flight-airport{color:white;}
-.phone-screen.dark-mockup .flight-airline{color:white;}
-.solution .phone-stage::before{background:radial-gradient(circle,rgba(165,180,252,.15),transparent 70%);}
-
-.section.preflight{background:var(--bg-soft);}
-.timeline-comparison{
-  background:var(--bg);border:1px solid var(--gray-line);border-radius:18px;
-  padding:36px;margin-top:48px;
-}
-.timeline-row{
-  display:grid;grid-template-columns:130px 1fr;gap:24px;
-  margin-bottom:24px;align-items:center;
-}
-.timeline-row:last-child{margin-bottom:0;}
-.timeline-label-box{
-  font-family:ui-monospace,monospace;font-size:13px;font-weight:700;
-  color:var(--ink);letter-spacing:.04em;
-  padding:12px 14px;border-radius:8px;background:var(--bg-3);text-align:center;
-}
-.timeline-label-box.competitor{color:var(--gray);}
-.timeline-phases{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
-}
-.phase{
-  background:var(--bg-soft);border:1.5px solid var(--gray-line);border-radius:12px;
-  padding:16px 14px;position:relative;
-}
-.phase.active{background:var(--accent-soft);border-color:var(--accent);}
-.phase.active::after{
-  content:'✓';position:absolute;top:-8px;right:-6px;
-  width:20px;height:20px;background:var(--accent);color:white;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;border:2px solid var(--bg);
-}
-.phase.competitor-active{background:var(--danger-soft);border-color:var(--danger);}
-.phase.competitor-active::after{
-  content:'!';position:absolute;top:-8px;right:-6px;
-  width:20px;height:20px;background:var(--danger);color:white;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;border:2px solid var(--bg);
-}
-.phase.dim{opacity:0.5;}
-.phase-tag{
-  font-size:10px;font-weight:700;color:var(--accent);
-  font-family:ui-monospace,monospace;letter-spacing:.06em;display:block;margin-bottom:6px;
-}
-.phase.competitor-active .phase-tag{color:var(--danger);}
-.phase.dim .phase-tag{color:var(--gray-2);}
-.phase strong{font-size:14px;color:var(--ink);font-weight:700;display:block;margin-bottom:4px;}
-.phase span.desc{font-size:12px;color:var(--ink-3);line-height:1.4;display:block;}
-.phase.dim span.desc, .phase.dim strong{color:var(--gray-2);}
-
-.partner-callout{
-  background:var(--accent-soft);color:var(--ink);border-radius:18px;padding:48px;
-  margin-top:32px;text-align:center;
-  border:1px solid rgba(79,70,229,.15);
-}
-.partner-callout h3{
-  font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.25;
-  color:var(--ink);max-width:780px;margin:0 auto 16px;
-}
-.partner-callout h3 .accent{color:var(--accent);font-style:italic;}
-.partner-callout p{font-size:16px;color:var(--ink-3);max-width:600px;margin:0 auto;}
-
-/* ========== CHAPTER 03 — JORNADA ========== */
+/* CADASTROS */
 .section.cadastros{background:var(--bg);}
-
-/* Cadastro showcase (2 mockups + arrow) */
 .cadastro-showcase{
   display:flex;align-items:center;justify-content:center;gap:24px;
   margin-bottom:64px;flex-wrap:wrap;
 }
-.showcase-step{
-  flex:0 1 320px;text-align:center;
-}
+.showcase-step{flex:0 1 320px;text-align:center;}
 .showcase-step-tag{
-  font-family:ui-monospace,monospace;font-size:11px;font-weight:700;
-  color:var(--accent);letter-spacing:.05em;margin-bottom:14px;
-  text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  color:var(--accent);letter-spacing:.05em;margin-bottom:14px;text-transform:uppercase;
 }
-.showcase-step img{
-  width:100%;height:auto;display:block;
-  filter:drop-shadow(0 24px 48px rgba(0,0,0,.12));
-}
-.showcase-step-label{
-  font-size:14px;color:var(--ink-2);font-weight:600;margin-top:14px;
-}
-.showcase-arrow{
-  font-size:32px;color:var(--accent);font-weight:300;
-  margin-top:20px;flex-shrink:0;
-}
+.showcase-step img{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 48px rgba(0,0,0,.12));}
+.showcase-step-label{font-size:14px;color:var(--ink-2);font-weight:600;margin-top:14px;}
+.showcase-arrow{font-size:32px;color:var(--accent);font-weight:300;flex-shrink:0;}
 
 .cadastro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .cadastro-card{
   background:var(--bg-soft);border:1px solid var(--gray-line);
-  border-radius:18px;padding:32px 28px;transition:all .25s ease;
+  border-radius:18px;padding:32px 28px;transition:all .25s;
 }
-.cadastro-card:hover{
-  border-color:var(--accent);transform:translateY(-2px);
-}
+.cadastro-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .cadastro-icon{
   width:48px;height:48px;border-radius:12px;background:var(--accent-soft);
   display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;
-  color:var(--accent);
 }
 .cadastro-card h3{margin-bottom:10px;}
 .cadastro-card p{font-size:15px;color:var(--gray);}
 
+/* MONITORING */
+.section.monitoring{
+  background:var(--bg-2);text-align:center;padding:140px 0;
+  background-image:linear-gradient(180deg,rgba(245,245,244,.85),rgba(245,245,244,.92)),url('images/atmosphere.jpeg');
+  background-size:cover;background-position:center;
+}
 .monitoring h2{font-size:64px;line-height:1.05;font-weight:800;letter-spacing:-.03em;margin-bottom:24px;}
 .monitoring h2 .accent{color:var(--accent);font-style:italic;}
 .monitoring p{font-size:18px;color:var(--gray);max-width:560px;margin:0 auto;}
 
+/* ACTIVATION */
 .section.activation{background:var(--bg);}
 .activation-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
 .activation .header h2{font-size:48px;}
@@ -473,174 +407,7 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
 .step-content h4{font-size:17px;font-weight:700;margin-bottom:4px;}
 .step-content p{font-size:14px;color:var(--gray);}
 
-/* Acompanhamento section */
-.section.accompanhamento{background:var(--bg-soft);}
-.accompanhamento-grid{
-  display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;
-}
-.accompanhamento-image{
-  display:flex;justify-content:center;position:relative;
-}
-.accompanhamento-image::before{
-  content:'';position:absolute;width:380px;height:380px;
-  background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);
-  filter:blur(40px);z-index:0;
-}
-.accompanhamento-image img{
-  position:relative;z-index:1;max-width:100%;height:auto;
-  filter:drop-shadow(0 30px 60px rgba(0,0,0,.12));
-}
-.accompanhamento-features{margin-top:32px;display:flex;flex-direction:column;gap:14px;}
-.accompanhamento-feature{
-  display:flex;align-items:flex-start;gap:14px;font-size:15px;color:var(--ink-2);
-}
-.accompanhamento-feature::before{
-  content:'✓';flex-shrink:0;width:24px;height:24px;border-radius:50%;
-  background:var(--accent-soft);color:var(--accent);font-weight:700;
-  display:flex;align-items:center;justify-content:center;font-size:12px;
-}
-.accompanhamento-feature strong{color:var(--ink);font-weight:700;display:block;margin-bottom:2px;}
-
-/* Speed (30s/90s) */
-.section.speed{background:var(--bg-soft);}
-.speed-timeline{position:relative;margin:48px 0 64px;padding:0 16px;}
-.speed-bar{
-  position:absolute;top:50%;left:60px;right:60px;height:2px;
-  background:var(--gray-line);transform:translateY(-50%);z-index:0;
-}
-.speed-milestones{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;position:relative;z-index:2;}
-.ms{
-  background:var(--bg);border:1.5px solid var(--gray-line);border-radius:12px;
-  padding:12px 10px;text-align:center;transition:all .2s;
-}
-.ms.hl{border-color:var(--accent);background:var(--accent-soft);}
-.ms.hl-end{border-color:var(--accent);background:var(--accent);color:white;}
-.ms.hl-end strong, .ms.hl-end span.t{color:white;}
-.ms span.t{
-  font-size:11px;font-weight:700;color:var(--accent);
-  font-family:ui-monospace,monospace;letter-spacing:.04em;display:block;margin-bottom:3px;
-}
-.ms.hl-end span.t{color:rgba(255,255,255,.85);}
-.ms strong{font-size:12px;color:var(--ink);font-weight:700;}
-
-.speed-columns{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-.speed-col{
-  background:var(--bg);border-radius:18px;padding:28px;border:1px solid var(--gray-line);
-}
-.speed-col-header{
-  display:flex;align-items:center;gap:14px;
-  padding-bottom:20px;margin-bottom:20px;
-  border-bottom:1px solid var(--gray-line);
-}
-.col-icon{
-  width:42px;height:42px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:20px;color:white;
-  flex-shrink:0;background:var(--accent);
-}
-.col-icon.wa{background:var(--success);}
-.speed-col-header h3{font-size:17px;margin-bottom:2px;}
-.speed-col-header p{font-size:12px;color:var(--gray);margin:0;}
-
-.phone-stack{display:flex;flex-direction:column;gap:16px;}
-.phone-card{
-  background:var(--bg-soft);border-radius:14px;padding:18px 16px 16px;
-  border:1px solid var(--gray-line);position:relative;
-}
-.phone-card.success{background:var(--accent-soft);border-color:var(--accent);}
-.phone-card.final{background:var(--success-soft);border-color:var(--success);}
-.phone-card-time{
-  position:absolute;top:-9px;left:12px;
-  background:var(--ink);color:white;
-  font-family:ui-monospace,monospace;font-size:10px;font-weight:700;
-  padding:3px 8px;border-radius:4px;letter-spacing:.04em;
-}
-.phone-card.success .phone-card-time{background:var(--accent);}
-.phone-card.final .phone-card-time{background:var(--success);}
-.phone-card-status{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;}
-.phone-card-headline{font-size:16px;font-weight:800;color:var(--accent);margin-bottom:6px;letter-spacing:-.01em;}
-.phone-card.final .phone-card-headline{color:var(--success);}
-.phone-card-msg{font-size:12px;color:var(--ink-2);line-height:1.5;}
-.phone-card-msg strong{color:var(--ink);}
-
-.phone-card-mockup{
-  position:relative;border-radius:14px;overflow:hidden;
-  background:var(--bg-2);
-}
-.phone-card-mockup img{display:block;width:100%;height:auto;}
-.phone-card-mockup .phone-card-time{position:absolute;top:10px;left:12px;z-index:2;}
-.phone-card-mockup-caption{
-  position:absolute;bottom:0;left:0;right:0;padding:14px 16px;
-  background:linear-gradient(180deg,transparent,rgba(0,0,0,.7));
-  color:white;font-size:12px;font-weight:600;
-}
-
-.loader-bar{margin-top:8px;height:2px;background:rgba(79,70,229,.15);border-radius:2px;overflow:hidden;}
-.loader-bar::after{
-  content:'';display:block;width:30%;height:100%;background:var(--accent);
-  animation:slide 1.5s infinite;
-}
-@keyframes slide{0%{transform:translateX(-100%);}100%{transform:translateX(400%);}}
-
-.lawyer-mini{
-  display:flex;align-items:center;gap:10px;margin:8px 0 4px;
-  padding:10px;background:var(--bg);border-radius:8px;
-}
-.lawyer-avatar-mini{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--accent),var(--accent-deep));
-  display:flex;align-items:center;justify-content:center;
-  color:white;font-weight:700;font-size:12px;
-}
-.lawyer-mini strong{font-size:12px;color:var(--ink);font-weight:700;display:block;line-height:1.3;}
-.lawyer-mini small{font-size:10px;color:var(--gray);}
-
-.wa-msg-box-mini{background:#e5ddd5;padding:10px;border-radius:8px;}
-.wa-msg-box-mini .wa-them{
-  background:white;padding:9px 11px;border-radius:7px;
-  font-size:12px;line-height:1.5;color:var(--ink);margin-bottom:5px;max-width:90%;
-}
-.wa-msg-box-mini .wa-me{
-  background:#dcf8c6;padding:7px 11px;border-radius:7px;
-  font-size:12px;color:var(--ink);margin-left:auto;display:inline-block;float:right;clear:both;
-}
-.wa-msg-box-mini::after{content:'';display:block;clear:both;}
-
-.speed-closer{margin-top:48px;text-align:center;}
-.speed-closer-stat{
-  display:inline-flex;align-items:center;gap:24px;
-  background:var(--bg);color:var(--ink);
-  padding:28px 40px;border-radius:18px;text-align:left;
-  border:1px solid var(--gray-line);
-}
-.speed-closer-stat .num-big{
-  font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--accent);
-}
-.speed-closer-stat .desc{font-size:15px;color:var(--ink-3);max-width:340px;}
-.speed-closer-stat .desc strong{color:var(--ink);}
-
-/* ========== CHAPTER 04 — POR QUE FUNCIONA ========== */
-.section.tech{background:var(--bg);}
-.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
-.tech-card{
-  background:var(--bg-soft);border:1px solid var(--gray-line);border-radius:18px;
-  padding:32px;transition:all .25s;
-}
-.tech-card:hover{border-color:var(--accent);}
-.tech-tag{
-  display:inline-block;font-family:ui-monospace,monospace;font-size:11px;
-  color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:6px;
-  margin-bottom:18px;font-weight:600;letter-spacing:.06em;
-}
-.tech-tag span{color:var(--gray);font-weight:500;font-size:10px;}
-.tech-card h3{font-size:22px;margin-bottom:10px;}
-.tech-card p{font-size:14px;color:var(--gray);line-height:1.6;}
-.tech-card-stats{
-  display:flex;gap:20px;margin-top:18px;padding-top:18px;
-  border-top:1px solid var(--gray-line);
-}
-.tech-stat{font-size:11px;color:var(--gray);}
-.tech-stat strong{color:var(--ink);font-size:16px;font-weight:700;display:block;}
-
+/* ADVOGADO AMIGO */
 .section.mistake{background:var(--bg-soft);}
 .mistake-warning{
   display:inline-flex;align-items:center;gap:8px;
@@ -669,9 +436,7 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
 .mistake-icon.x{background:var(--danger);}
 .mistake-icon.check{background:var(--accent);}
 .mistake-col h3{font-size:18px;font-weight:700;line-height:1.2;}
-.mistake-col h3 small{
-  display:block;font-size:12px;font-weight:500;color:var(--gray);margin-top:4px;
-}
+.mistake-col h3 small{display:block;font-size:12px;font-weight:500;color:var(--gray);margin-top:4px;}
 .mistake-list{list-style:none;}
 .mistake-list li{
   font-size:14px;color:var(--ink-2);line-height:1.5;
@@ -689,26 +454,26 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
 
 .mistake-stat-box{
   margin-top:32px;background:var(--bg);color:var(--ink);border-radius:18px;
-  padding:40px;text-align:center;
-  border:1px solid var(--gray-line);
+  padding:40px;text-align:center;border:1px solid var(--gray-line);
 }
 .mistake-stat-box .label{
   font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;margin-bottom:12px;
 }
 .mistake-stat-box .big{
-  font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:14px;color:var(--ink);
+  font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:14px;
 }
 .mistake-stat-box .big .vs{color:var(--gray);font-weight:500;}
 .mistake-stat-box .big .accent{color:var(--accent);}
 .mistake-stat-box p{font-size:15px;color:var(--ink-3);max-width:680px;margin:0 auto;}
 .mistake-stat-box p strong{color:var(--ink);}
 
+/* LAWYERS */
 .section.lawyers{background:var(--bg);}
 .lawyer-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
 .lawyer-card{
   background:var(--bg-soft);border:1px solid var(--gray-line);
-  border-radius:18px;padding:32px 28px;transition:all .25s;
+  border-radius:18px;padding:32px 28px;transition:transform .25s;
 }
 .lawyer-card:hover{transform:translateY(-3px);}
 .lawyer-avatar{
@@ -718,16 +483,13 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
   font-size:20px;font-weight:700;color:white;
 }
 .lawyer-avatar.var-2{background:linear-gradient(135deg,#0EA5E9,#0369A1);}
-.lawyer-avatar.var-3{background:linear-gradient(135deg,var(--success),#047857);}
+.lawyer-avatar.var-3{background:linear-gradient(135deg,#10B981,#047857);}
 .lawyer-card h3{font-size:17px;margin-bottom:4px;}
 .lawyer-oab{
-  display:inline-block;font-family:ui-monospace,monospace;font-size:11px;
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;
   color:var(--gray);margin-bottom:18px;letter-spacing:.04em;
 }
-.lawyer-stats{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  padding-top:18px;border-top:1px solid var(--gray-line);
-}
+.lawyer-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:18px;border-top:1px solid var(--gray-line);}
 .lawyer-stat{font-size:11px;color:var(--gray);}
 .lawyer-stat strong{display:block;color:var(--ink);font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:1px;}
 .lawyer-tag{
@@ -735,13 +497,7 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
   padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-bottom:14px;
 }
 
-.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;}
-.metric-card{padding:28px 0;border-top:2px solid var(--ink);}
-.metric-num{font-size:48px;line-height:1;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:10px;}
-.metric-num .pct{color:var(--accent);}
-.metric-label{font-size:14px;color:var(--gray);}
-
-/* ========== CHAPTER 05 — PROVA ========== */
+/* TESTIMONIALS */
 .section.testimonials{background:var(--bg-soft);}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
 .testimonial{
@@ -750,33 +506,31 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
   display:flex;flex-direction:column;
 }
 .testimonial-stars{color:var(--success);font-size:14px;margin-bottom:14px;letter-spacing:.05em;}
-.testimonial-text{
-  font-size:15px;line-height:1.6;color:var(--ink-2);font-weight:500;
-  margin-bottom:20px;flex:1;
-}
+.testimonial-text{font-size:15px;line-height:1.6;color:var(--ink-2);font-weight:500;margin-bottom:20px;flex:1;}
 .testimonial-author{display:flex;align-items:center;gap:10px;}
 .testimonial-avatar{
   width:36px;height:36px;border-radius:50%;
   background:linear-gradient(135deg,var(--gray),var(--gray-2));
   display:flex;align-items:center;justify-content:center;
   color:white;font-weight:700;font-size:13px;
+  background-size:cover;background-position:center;
 }
 .testimonial-meta{font-size:12px;}
 .testimonial-meta strong{display:block;color:var(--ink);font-weight:700;}
 .testimonial-meta span{color:var(--gray);}
 
+/* BENEFITS */
 .section.benefits{background:var(--bg);}
 .benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;}
 .benefit-card{text-align:left;}
 .benefit-icon-circle{
   width:52px;height:52px;border-radius:14px;background:var(--accent-soft);
-  display:flex;align-items:center;justify-content:center;font-size:22px;
-  margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;
 }
 .benefit-card h3{font-size:18px;margin-bottom:10px;}
 .benefit-card p{font-size:14px;color:var(--gray);}
 
-/* ========== FAQ ========== */
+/* FAQ */
 .section.faq{background:var(--bg-soft);}
 .faq-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;}
 .faq-list{display:flex;flex-direction:column;}
@@ -791,16 +545,21 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
 .faq-a{font-size:14px;color:var(--gray);line-height:1.7;margin-top:10px;display:none;}
 .faq-item.open .faq-a{display:block;}
 
-/* ========== PAYOFF + CTA ========== */
+/* PAYOFF */
+.section.payoff{
+  text-align:center;background:var(--bg);padding:140px 0;
+  background-image:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.96)),url('images/payoff.jpeg');
+  background-size:cover;background-position:center;
+}
 .testimonial-quote{
   font-size:42px;line-height:1.2;font-weight:600;letter-spacing:-.02em;
   color:var(--ink);max-width:780px;margin:0 auto 24px;
 }
 .testimonial-quote .accent{color:var(--accent);font-style:italic;}
-.testimonial-author-big{font-size:14px;color:var(--gray);}
 
+/* CTA */
 .section.cta-final{
-  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+  background:linear-gradient(135deg,var(--accent),var(--accent-deep));
   border-radius:32px;margin:0 32px 64px;
   text-align:center;padding:96px 32px;color:white;
 }
@@ -808,63 +567,61 @@ p{font-size:16px;line-height:1.6;color:var(--ink-3);}
   color:white;font-size:56px;line-height:1.05;font-weight:800;
   letter-spacing:-.025em;margin-bottom:20px;
 }
-.cta-final h2 em{font-style:italic;color:#E0E7FF;font-weight:700;}
+.cta-final h2 em{font-style:italic;color:#E0E7FF;}
 .cta-final p{font-size:18px;color:#E0E7FF;max-width:520px;margin:0 auto 40px;}
 .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .cta-buttons .btn-app{
   background:white;color:var(--ink);padding:16px 26px;border-radius:12px;
-  font-weight:600;font-size:15px;text-decoration:none;
-  transition:transform .15s ease;
+  font-weight:600;font-size:15px;
+  transition:transform .15s;
   display:inline-flex;align-items:center;gap:10px;
 }
 .cta-buttons .btn-app:hover{transform:translateY(-2px);}
-.cta-buttons .btn-wa{background:var(--success);color:white;}
+.cta-buttons .btn-wa{background:var(--ink);color:white;}
 
-footer{padding:48px 32px 64px;text-align:center;background:var(--bg);font-size:14px;color:var(--gray);border-top:1px solid var(--gray-line);}
+/* FOOTER */
+footer{
+  padding:48px 32px 64px;text-align:center;
+  background:var(--bg);font-size:14px;color:var(--gray);
+  border-top:1px solid var(--gray-line);
+}
 footer .logo{font-size:18px;margin-bottom:8px;}
 footer .links{margin-top:24px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
-footer .links a{color:var(--gray);text-decoration:none;}
+footer .links a{color:var(--gray);}
 footer .links a:hover{color:var(--ink);}
 
-/* ========== RESPONSIVE ========== */
+/* RESPONSIVE */
 @media(max-width:900px){
   .nav-links{display:none;}
   .section{padding:80px 0;}
-  .chapter{padding:60px 32px 32px;}
   .hero{padding:120px 0 60px;}
   .hero-grid{grid-template-columns:1fr;gap:48px;}
   .hero h1{font-size:42px;}
-  .phone{margin:0 auto;}
+  .phone-display{margin:0 auto;}
+  .float-card-1{left:-10px;width:200px;}
+  .float-card-2{right:-10px;width:170px;}
+  .float-card-3{left:-10px;width:200px;}
+  h2{font-size:34px;}
   .big-stat .number{font-size:120px;}
+  .big-stat .label{font-size:20px;}
   .big-stat-grid{grid-template-columns:1fr;text-align:center;gap:48px;}
   .big-stat .label,.big-stat p.sub{margin-left:auto;margin-right:auto;}
-  h2{font-size:34px;}
   .pain-cards,.cadastro-cards,.lawyer-cards,.testimonials-grid{grid-template-columns:1fr;}
-  .disruption-cards,.tech-grid,.benefits-grid,.metrics-grid{grid-template-columns:1fr 1fr;}
+  .benefits-grid{grid-template-columns:1fr 1fr;}
   .solution{margin:0 16px;}
   .solution .wrap{padding:0 28px;}
   .solution-grid{grid-template-columns:1fr;gap:48px;}
   .monitoring h2,.cta-final h2{font-size:36px;}
-  .activation-grid,.faq-grid,.accompanhamento-grid{grid-template-columns:1fr;gap:36px;}
+  .activation-grid,.faq-grid{grid-template-columns:1fr;gap:36px;}
   .testimonial-quote{font-size:26px;}
-  .timeline-row{grid-template-columns:1fr;gap:12px;}
-  .timeline-phases{grid-template-columns:1fr 1fr;}
-  .partner-callout h3{font-size:24px;}
-  .partner-callout{padding:36px 24px;}
-  .speed-columns{grid-template-columns:1fr;gap:20px;}
-  .speed-milestones{grid-template-columns:repeat(3,1fr);gap:6px;}
-  .ms:nth-child(2),.ms:nth-child(4){display:none;}
-  .speed-bar{display:none;}
-  .speed-closer-stat{flex-direction:column;gap:10px;text-align:center;}
-  .speed-closer-stat .num-big{font-size:48px;}
   .mistake-comparison{grid-template-columns:1fr;}
   .mistake-col.wrong{border-right:none;border-bottom:1px solid var(--gray-line);}
   .mistake-stat-box .big{font-size:32px;}
   .cta-final{margin:0 16px 48px;}
-}
-@media(max-width:540px){
-  .disruption-cards,.tech-grid,.benefits-grid,.metrics-grid{grid-template-columns:1fr;}
-  .trustpilot-inner{font-size:12px;gap:6px;}
+  .table-header{padding:18px 16px;flex-direction:column;align-items:flex-start;gap:12px;}
+  .table-total{align-items:flex-start;}
+  .recovery-table th, .recovery-table td{padding:12px 14px;font-size:12px;}
+  .recovery-table .hide-mobile{display:none;}
 }
 </style>
 </head>
@@ -874,65 +631,77 @@ footer .links a:hover{color:var(--ink);}
   <div class="nav-inner">
     <a href="#" class="logo">Voou<span>.ai</span></a>
     <div class="nav-links">
-      <a href="#dor">A Dor</a>
-      <a href="#solucao">A Solução</a>
-      <a href="#jornada">A Jornada</a>
-      <a href="#por-que">Por que funciona</a>
+      <a href="#recovery">Recuperações</a>
+      <a href="#advogados">Advogados</a>
+      <a href="#como">Como funciona</a>
       <a href="#faq">FAQ</a>
     </div>
     <a href="#cadastrar" class="nav-cta">Cadastrar voo</a>
   </div>
 </nav>
 
-<!-- ============================
-     HERO
-============================ -->
+<!-- HERO -->
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="hero-tag">Companheiro de viagem · IA + advogado</div>
-        <h1>Seu voo atrasou? <span class="accent">A companhia te deve.</span></h1>
-        <p class="lead">Cadastra antes de embarcar. A IA monitora em silêncio, detecta problemas em tempo real e aciona advogado especialista — sem você precisar fazer nada.</p>
+        <div class="hero-tag">Powered by AI · Em tempo real</div>
+        <h1>As companhias aéreas <span class="accent">lucram bilhões</span> porque passageiros desistem.</h1>
+        <p class="lead">A Voou.ai monitora automaticamente atrasos, cancelamentos e conexões perdidas — e recupera sua indenização sem burocracia, sem advogado, sem dor de cabeça.</p>
         <div class="hero-trust">
-          <span>99% taxa de sucesso</span>
-          <span>Advogados especialistas</span>
-          <span>Zero custo</span>
+          <span>R$ 2,8M recuperados</span>
+          <span>11.432 passageiros</span>
+          <span>Zero custo inicial</span>
         </div>
         <div class="hero-ctas">
-          <a href="#cadastrar" class="btn btn-primary">Cadastrar voo grátis →</a>
-          <a href="#solucao" class="btn btn-secondary">Como funciona</a>
+          <a href="#cadastrar" class="btn btn-primary">
+            Descobrir quanto tenho a receber
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#como" class="btn btn-secondary">Como funciona</a>
         </div>
       </div>
 
-      <div class="phone-stage">
-        <img src="images/app_03_dashboard.jpeg" alt="App Voou.ai monitorando voos do Bruno">
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <div class="phone-display">
+          <img src="images/app_03_dashboard.jpeg" alt="Voou.ai dashboard">
+        </div>
+
+        <div class="float-card float-card-1">
+          <div class="fc-tag">IA Analisando</div>
+          <div class="fc-headline">FlightAware + ANAC</div>
+          <div class="fc-meta">Cruzando 5 fontes oficiais</div>
+          <div class="ai-bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="float-card float-card-2">
+          <div class="fc-tag">✓ Caso elegível</div>
+          <div class="fc-headline">Atraso 4h 12min</div>
+          <div class="fc-meta">GOL · GRU → GIG</div>
+        </div>
+
+        <div class="float-card float-card-3">
+          <div class="fc-tag green">+ Indenização</div>
+          <div class="fc-headline">Crédito confirmado</div>
+          <div class="fc-amount">R$ 9.840</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Trust strip -->
+<!-- TRUSTPILOT -->
 <div class="trustpilot-strip">
   <div class="trustpilot-inner">
     <span class="tp-excellent">Excelente</span>
     <span class="tp-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
-    <span class="tp-rating">4,9</span>
-    <span>com base em <span class="tp-count">2.300+ casos resolvidos</span> pela rede</span>
+    <span class="mono" style="font-weight:700;color:var(--ink);">4,9</span>
+    <span>com base em 2.300+ casos resolvidos</span>
   </div>
 </div>
 
-<!-- ============================
-     CAPÍTULO 01 — A DOR
-============================ -->
-<div class="chapter" id="dor">
-  <div class="chapter-inner">
-    <span class="chapter-num">01</span>
-    <span class="chapter-line"></span>
-    <span class="chapter-name">A Dor</span>
-  </div>
-</div>
-
+<!-- BIG STAT -->
 <section class="section big-stat">
   <div class="wrap">
     <div class="big-stat-grid">
@@ -942,12 +711,13 @@ footer .links a:hover{color:var(--ink);}
         <p class="sub">A companhia aérea conta com isso. Voou.ai não — quando você cadastra, o sistema cobra automaticamente até a indenização cair na sua conta.</p>
       </div>
       <div class="big-stat-image">
-        <img src="images/app_08_recebido.jpeg" alt="App mostrando indenização recebida" loading="lazy">
+        <img src="images/app_08_recebido.jpeg" alt="Indenização recebida no app" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
+<!-- PAIN -->
 <section class="section pain">
   <div class="wrap">
     <div class="section-header">
@@ -960,7 +730,7 @@ footer .links a:hover{color:var(--ink);}
         <div class="pain-card-content">
           <div class="pain-emoji">😩</div>
           <h3>Cansaço</h3>
-          <p>Você está há horas no aeroporto. Sem informação. Sem comida. Sem hotel. Você só quer chegar em casa — não quer pensar em direitos, advogados, processos.</p>
+          <p>Você está há horas no aeroporto. Sem informação, sem comida, sem hotel. Você só quer chegar em casa — não quer pensar em direitos, advogados, processos.</p>
         </div>
       </div>
       <div class="pain-card">
@@ -983,70 +753,126 @@ footer .links a:hover{color:var(--ink);}
   </div>
 </section>
 
-<section class="section disruption">
+<!-- LIVE RECOVERY TABLE -->
+<section class="section recovery" id="recovery">
   <div class="wrap">
     <div class="section-header">
-      <div class="eyebrow">Cobertura completa</div>
-      <h2>Tipos de problemas <span class="light">que cobrimos.</span></h2>
-      <p>Somos especialistas em todas as situações de interrupção de voo. Faremos o possível para que você receba a indenização que tem direito — sem custo, sem burocracia.</p>
+      <div class="eyebrow">Recuperações reais</div>
+      <h2>O que <span class="accent">recuperamos</span> nos últimos 30 dias.</h2>
+      <p>Indenizações reais creditadas para passageiros reais via Voou.ai. Atualização ao vivo.</p>
     </div>
-    <div class="disruption-cards">
-      <div class="disruption-card">
-        <div class="disruption-icon-box">⏱️</div>
-        <h3>Atrasos de voo</h3>
-        <p>Se seu voo atrasou mais de 4 horas, você tem direito a compensação de até <strong>R$ 12.000</strong>.</p>
-        <div class="disruption-stat"><strong>1 em cada 8</strong> voos no Brasil atrasa.</div>
+
+    <div class="table-wrap">
+      <div class="table-header">
+        <div class="table-header-left">
+          <div class="table-live-dot"></div>
+          <div class="table-live-label"><strong>Ao vivo</strong> · 18 casos resolvidos hoje</div>
+        </div>
+        <div class="table-total">
+          <div class="table-total-label">Total recuperado em 30 dias</div>
+          <div class="table-total-amount">R$ 487.382</div>
+        </div>
       </div>
-      <div class="disruption-card">
-        <div class="disruption-icon-box">✈️</div>
-        <h3>Cancelamentos</h3>
-        <p>Voo cancelado em até 14 dias antes da partida tem direito a reembolso ou indenização de até <strong>R$ 12.000</strong>.</p>
-        <div class="disruption-stat"><strong>+ de 280 mil</strong> voos cancelados/ano.</div>
-      </div>
-      <div class="disruption-card">
-        <div class="disruption-icon-box">🔄</div>
-        <h3>Conexões perdidas</h3>
-        <p>Perdeu conexão por culpa da companhia e chegou com 4h+ de atraso? Você pode receber até <strong>R$ 8.000</strong>.</p>
-        <div class="disruption-stat"><strong>4 milhões+</strong> passageiros perdem conexões.</div>
-      </div>
-      <div class="disruption-card">
-        <div class="disruption-icon-box">🧳</div>
-        <h3>Bagagem e overbooking</h3>
-        <p>Bagagem extraviada, embarque negado, problemas em escalas. Indenização de até <strong>R$ 15.000</strong>.</p>
-        <div class="disruption-stat"><strong>3 milhões+</strong> passageiros lesados/ano.</div>
+
+      <table class="recovery-table">
+        <thead>
+          <tr>
+            <th>Companhia</th>
+            <th>Tipo</th>
+            <th class="hide-mobile">Rota</th>
+            <th class="hide-mobile">Tempo</th>
+            <th class="right">Recuperado</th>
+            <th class="right">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>GOL</div></td>
+            <td>Atraso 5h 18min</td>
+            <td class="hide-mobile"><span class="tbl-route">GRU → BSB</span></td>
+            <td class="hide-mobile"><span class="tbl-time">8 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 11.200<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>LATAM</div></td>
+            <td>Conexão perdida</td>
+            <td class="hide-mobile"><span class="tbl-route">GIG → MIA</span></td>
+            <td class="hide-mobile"><span class="tbl-time">11 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 8.400<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>AZUL</div></td>
+            <td>Cancelamento</td>
+            <td class="hide-mobile"><span class="tbl-route">VCP → REC</span></td>
+            <td class="hide-mobile"><span class="tbl-time">6 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 14.600<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>GOL</div></td>
+            <td>Bagagem extraviada</td>
+            <td class="hide-mobile"><span class="tbl-route">CGH → SSA</span></td>
+            <td class="hide-mobile"><span class="tbl-time">9 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 9.840<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>LATAM</div></td>
+            <td>Overbooking</td>
+            <td class="hide-mobile"><span class="tbl-route">GRU → LIS</span></td>
+            <td class="hide-mobile"><span class="tbl-time">7 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 12.300<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>AZUL</div></td>
+            <td>Atraso 6h 40min</td>
+            <td class="hide-mobile"><span class="tbl-route">VCP → POA</span></td>
+            <td class="hide-mobile"><span class="tbl-time">10 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 7.500<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>GOL</div></td>
+            <td>Cancelamento</td>
+            <td class="hide-mobile"><span class="tbl-route">GIG → CNF</span></td>
+            <td class="hide-mobile"><span class="tbl-time">5 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 8.900<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+          <tr>
+            <td><div class="tbl-airline"><div class="tbl-airline-dot">✈️</div>LATAM</div></td>
+            <td>Atraso 4h 25min</td>
+            <td class="hide-mobile"><span class="tbl-route">GRU → JFK</span></td>
+            <td class="hide-mobile"><span class="tbl-time">12 meses</span></td>
+            <td class="right"><span class="tbl-amount">R$ 15.200<span class="tbl-amount-arrow">↑</span></span></td>
+            <td class="right"><span class="tbl-status">Pago</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-footer">
+        <span>Mostrando 8 de 11.432 casos resolvidos</span>
+        <a href="#" class="table-footer-link">Ver todos os casos →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================
-     CAPÍTULO 02 — A SOLUÇÃO
-============================ -->
-<div class="chapter" id="solucao">
-  <div class="chapter-inner">
-    <span class="chapter-num">02</span>
-    <span class="chapter-line"></span>
-    <span class="chapter-name">A Solução</span>
-  </div>
-</div>
-
+<!-- SOLUTION (DARK with VIDEO) -->
 <section class="section solution">
   <div class="wrap">
     <div class="solution-grid">
       <div>
         <div class="eyebrow">Conheça Voou.ai</div>
         <h2>O companheiro <span class="accent">que voa com você.</span></h2>
-        <p class="lead">Cadastra seu voo uma vez. A gente assume daí. IA monitora em silêncio. Detecta qualquer problema em tempo real. Aciona advogado especialista automaticamente. Sem você precisar abrir o app, ligar pra ninguém, ou contratar advogado.</p>
+        <p class="lead">Cadastra seu voo uma vez. A IA assume daí. Monitora em silêncio, detecta qualquer problema em tempo real e aciona advogado especialista automaticamente. Sem você precisar abrir o app, ligar pra ninguém, ou contratar advogado.</p>
       </div>
       <div class="solution-image-wrap">
         <div class="video-overlay-tag">DEMO · 30s</div>
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-          poster="images/voou_demo_poster.jpg">
+        <video autoplay loop muted playsinline preload="metadata" poster="images/voou_demo_poster.jpg">
           <source src="images/voou_demo.mp4" type="video/mp4">
         </video>
       </div>
@@ -1054,75 +880,8 @@ footer .links a:hover{color:var(--ink);}
   </div>
 </section>
 
-<section class="section preflight">
-  <div class="wrap">
-    <div class="section-header">
-      <div class="eyebrow">Posicionamento único</div>
-      <h2>Antes do problema. <span class="light">Não depois.</span></h2>
-      <p>Concorrentes só existem DEPOIS que algo deu errado. Voou.ai é seu parceiro durante TODA a viagem — desde o segundo que você comprou a passagem até o caso resolvido.</p>
-    </div>
-
-    <div class="timeline-comparison">
-      <div class="timeline-row">
-        <div class="timeline-label-box">VOOU.AI</div>
-        <div class="timeline-phases">
-          <div class="phase active">
-            <span class="phase-tag">FASE 1 · COMPRA</span>
-            <strong>Cadastrado</strong>
-            <span class="desc">Foto do email, cartão ou checkout do Decolar.</span>
-          </div>
-          <div class="phase active">
-            <span class="phase-tag">FASE 2 · PRÉ-VOO</span>
-            <strong>Monitorando</strong>
-            <span class="desc">IA acompanha o voo silenciosamente.</span>
-          </div>
-          <div class="phase active">
-            <span class="phase-tag">FASE 3 · VOO</span>
-            <strong>Vigilante</strong>
-            <span class="desc">APIs cruzadas em tempo real.</span>
-          </div>
-          <div class="phase active">
-            <span class="phase-tag">FASE 4 · PÓS-VOO</span>
-            <strong>Ação automática</strong>
-            <span class="desc">Se atrasou, sistema age sozinho.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-label-box competitor">CONCORRENTE</div>
-        <div class="timeline-phases">
-          <div class="phase dim"><span class="phase-tag">FASE 1</span><strong>—</strong><span class="desc">Não existe.</span></div>
-          <div class="phase dim"><span class="phase-tag">FASE 2</span><strong>—</strong><span class="desc">Não existe.</span></div>
-          <div class="phase dim"><span class="phase-tag">FASE 3</span><strong>—</strong><span class="desc">Não existe.</span></div>
-          <div class="phase competitor-active">
-            <span class="phase-tag">FASE 4 · PÓS-PROBLEMA</span>
-            <strong>Você procura</strong>
-            <span class="desc">Você descobre, pesquisa, paga 30%.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="partner-callout">
-      <h3>Não somos um <span class="accent">serviço de socorro depois do desastre.</span><br>Somos seu copiloto desde <span class="accent">antes da decolagem.</span></h3>
-      <p>Cada voo cadastrado é monitorado em tempo real. Você embarca sabendo que tem alguém de plantão — uma IA que não dorme + advogados especialistas — pronta pra agir.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================
-     CAPÍTULO 03 — A JORNADA
-============================ -->
-<div class="chapter" id="jornada">
-  <div class="chapter-inner">
-    <span class="chapter-num">03</span>
-    <span class="chapter-line"></span>
-    <span class="chapter-name">A Jornada</span>
-  </div>
-</div>
-
-<section class="section cadastros">
+<!-- CADASTROS -->
+<section class="section cadastros" id="como">
   <div class="wrap">
     <div class="section-header">
       <div class="eyebrow">Como cadastrar</div>
@@ -1148,22 +907,23 @@ footer .links a:hover{color:var(--ink);}
       <div class="cadastro-card">
         <div class="cadastro-icon">📱</div>
         <h3>App nativo</h3>
-        <p>Tira foto do email de confirmação ou do cartão de embarque. A IA lê em 5 segundos e cadastra. Pode adicionar voos de toda a família.</p>
+        <p>Tira foto do email de confirmação ou do cartão de embarque. A IA lê em 5 segundos e cadastra.</p>
       </div>
       <div class="cadastro-card">
         <div class="cadastro-icon">💬</div>
         <h3>WhatsApp</h3>
-        <p>Encaminha o email da reserva pro nosso número. Bot lê em 5 segundos e confirma. Sem instalar app. Sem login.</p>
+        <p>Encaminha o email da reserva pro nosso número. Bot lê em 5 segundos e confirma. Sem instalar app.</p>
       </div>
       <div class="cadastro-card">
         <div class="cadastro-icon">🎫</div>
         <h3>Direto na compra</h3>
-        <p>Comprou no Decolar, 123milhas ou Smiles? Marca o checkbox no checkout. Voo já entra protegido sem você instalar nada.</p>
+        <p>Comprou no Decolar, 123milhas ou Smiles? Marca o checkbox no checkout. Voo já entra protegido.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- MONITORING -->
 <section class="section monitoring">
   <div class="wrap">
     <h2>Você voa.<br>A gente fica de olho.<br><span class="accent">Em silêncio.</span></h2>
@@ -1171,6 +931,7 @@ footer .links a:hover{color:var(--ink);}
   </div>
 </section>
 
+<!-- ACTIVATION -->
 <section class="section activation">
   <div class="wrap">
     <div class="activation-grid">
@@ -1190,204 +951,27 @@ footer .links a:hover{color:var(--ink);}
   </div>
 </section>
 
-<section class="section accompanhamento">
-  <div class="wrap">
-    <div class="accompanhamento-grid">
-      <div class="accompanhamento-image">
-        <img src="images/app_07_acompanhamento.jpeg" alt="Acompanhamento do caso pelo app">
-      </div>
-      <div>
-        <div class="eyebrow">Acompanhamento em tempo real</div>
-        <h2>Veja cada etapa <span class="light">do seu caso pelo app.</span></h2>
-        <p style="font-size:18px;color:var(--gray);margin-top:20px;">Da petição protocolada à audiência marcada, da sentença ao crédito na sua conta — tudo aparece em tempo real, como o status de uma entrega. Você nunca mais fica sem saber o que está acontecendo com seu processo.</p>
-        <div class="accompanhamento-features">
-          <div class="accompanhamento-feature">
-            <div><strong>Notificações em cada etapa</strong>Caso enviado, petição protocolada, audiência marcada, sentença favorável, crédito recebido.</div>
-          </div>
-          <div class="accompanhamento-feature">
-            <div><strong>Comunicação direta com o advogado</strong>Pelo próprio app ou WhatsApp. Sem ligações, sem esperar retorno em escritório.</div>
-          </div>
-          <div class="accompanhamento-feature">
-            <div><strong>Documentos assinados digitalmente</strong>Quando precisar de assinatura sua, é tudo no app. Sem cartório, sem reconhecimento de firma.</div>
-          </div>
-          <div class="accompanhamento-feature">
-            <div><strong>Pode esquecer se quiser</strong>Tudo automático. Mas se você gosta de acompanhar, está lá em tempo real.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section speed">
-  <div class="wrap">
-    <div class="section-header">
-      <div class="eyebrow">Velocidade real</div>
-      <h2>30 segundos pra avaliar.<br><span class="accent">90 segundos pra conectar.</span></h2>
-      <p>Toda a jornada do problema ao advogado especialista acontece em menos tempo do que pra pegar um Uber.</p>
-    </div>
-
-    <div class="speed-timeline">
-      <div class="speed-bar"></div>
-      <div class="speed-milestones">
-        <div class="ms"><span class="t">T+0s</span><strong>Você envia</strong></div>
-        <div class="ms"><span class="t">T+5s</span><strong>IA lê o voo</strong></div>
-        <div class="ms hl"><span class="t">T+30s</span><strong>Avaliação completa</strong></div>
-        <div class="ms"><span class="t">T+60s</span><strong>Caso montado</strong></div>
-        <div class="ms hl-end"><span class="t">T+90s</span><strong>Advogado conectado</strong></div>
-      </div>
-    </div>
-
-    <div class="speed-columns">
-      <div class="speed-col">
-        <div class="speed-col-header">
-          <div class="col-icon">📱</div>
-          <div><h3>Pelo App nativo</h3><p>3 fotos · iOS ou Android</p></div>
-        </div>
-        <div class="phone-stack">
-          <div class="phone-card-mockup">
-            <div class="phone-card-time">T+5s</div>
-            <img src="images/app_04_alerta.jpeg" alt="App detectou atraso e está coletando provas">
-            <div class="phone-card-mockup-caption">Voo detectado · Coletando provas oficiais</div>
-          </div>
-          <div class="phone-card-mockup">
-            <div class="phone-card-time">T+30s</div>
-            <img src="images/app_05_avaliacao.jpeg" alt="Caso elegível com indenização estimada">
-            <div class="phone-card-mockup-caption">Caso elegível · 4h12 · R$ 8–12k · 91%</div>
-          </div>
-          <div class="phone-card-mockup">
-            <div class="phone-card-time">T+90s</div>
-            <img src="images/app_06_advogado.jpeg" alt="Dr. Carlos Mendes conectado ao caso">
-            <div class="phone-card-mockup-caption">Dr. Carlos Mendes conectado · OAB/SP · 89% procedência</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="speed-col">
-        <div class="speed-col-header">
-          <div class="col-icon wa">💬</div>
-          <div><h3>Pelo WhatsApp</h3><p>Encaminha o email · Sem instalar nada</p></div>
-        </div>
-        <div class="phone-stack">
-          <div class="phone-card">
-            <div class="phone-card-time">T+5s</div>
-            <div class="wa-msg-box-mini">
-              <div class="wa-them">✅ Recebi seu email!<br>Detectei <strong>GOL 1234</strong> (GRU → GIG, 12 jun).<br>Verificando atraso na ANAC...</div>
-            </div>
-          </div>
-          <div class="phone-card success">
-            <div class="phone-card-time">T+30s</div>
-            <div class="wa-msg-box-mini">
-              <div class="wa-them">⚡ <strong>CASO ELEGÍVEL ✓</strong><br>• Atraso: <strong>4h 12min</strong><br>• Indenização: <strong>R$ 8–12k</strong><br>• Procedência: <strong>91%</strong></div>
-              <div class="wa-me">Sim, quero ✅</div>
-            </div>
-          </div>
-          <div class="phone-card final">
-            <div class="phone-card-time">T+90s</div>
-            <div class="wa-msg-box-mini">
-              <div class="wa-them">🎉 <strong>Advogado conectado!</strong><br><strong>Dr. Carlos Mendes</strong><br>OAB/SP · 15 anos · Aviação<br>Vai te ligar em até 24h aqui mesmo.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="speed-closer">
-      <div class="speed-closer-stat">
-        <div class="num-big">90s</div>
-        <div class="desc">do trigger ao advogado especialista. <strong style="color:white;">Mais rápido que pedir um Uber.</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================
-     CAPÍTULO 04 — POR QUE FUNCIONA
-============================ -->
-<div class="chapter" id="por-que">
-  <div class="chapter-inner">
-    <span class="chapter-num">04</span>
-    <span class="chapter-line"></span>
-    <span class="chapter-name">Por que funciona</span>
-  </div>
-</div>
-
-<section class="section tech">
-  <div class="wrap">
-    <div class="section-header">
-      <div class="eyebrow">Tecnologia proprietária</div>
-      <h2>Inovações que <span class="light">nenhum concorrente tem.</span></h2>
-      <p>4 tecnologias com patente pendente que tornam Voou.ai categoricamente diferente. Construído do zero com IA generativa, machine learning e blockchain.</p>
-    </div>
-
-    <div class="tech-grid">
-      <div class="tech-card">
-        <div class="tech-tag">VOOU PREDICT™ <span>· patente pendente</span></div>
-        <h3>Saiba se seu voo vai atrasar antes de comprar</h3>
-        <p>ML treinado em 5 anos de dados de voo, padrões de tráfego aéreo, histórico da aeronave e clima. Prevê probabilidade de atraso com 89% acurácia.</p>
-        <div class="tech-card-stats">
-          <div class="tech-stat"><strong>89%</strong>acurácia</div>
-          <div class="tech-stat"><strong>5 anos</strong>de dados</div>
-          <div class="tech-stat"><strong>Único</strong>no Brasil</div>
-        </div>
-      </div>
-
-      <div class="tech-card">
-        <div class="tech-tag">VOOU VAULT™ <span>· blockchain</span></div>
-        <h3>Cofre criptográfico de provas imutáveis</h3>
-        <p>Cada prova é hasheada e registrada em blockchain pública. Time-stamped, criptograficamente assinada, impossível de adulterar. Juridicamente irrefutável.</p>
-        <div class="tech-card-stats">
-          <div class="tech-stat"><strong>Polygon</strong>blockchain</div>
-          <div class="tech-stat"><strong>SHA-256</strong>hash</div>
-          <div class="tech-stat"><strong>Imutável</strong>jurídico</div>
-        </div>
-      </div>
-
-      <div class="tech-card">
-        <div class="tech-tag">ESTIMADOR™ <span>· preditivo</span></div>
-        <h3>Calculadora preditiva de indenização</h3>
-        <p>Análise de padrões históricos por juiz, vara e comarca. Mostra valor estimado exato baseado em milhares de sentenças anteriores. Acurácia >90%.</p>
-        <div class="tech-card-stats">
-          <div class="tech-stat"><strong>50k+</strong>sentenças</div>
-          <div class="tech-stat"><strong>>90%</strong>acurácia</div>
-          <div class="tech-stat"><strong>Por juiz</strong>análise</div>
-        </div>
-      </div>
-
-      <div class="tech-card">
-        <div class="tech-tag">SENTINELA™ <span>· anti-acordo</span></div>
-        <h3>Detector de acordo subvalorizado</h3>
-        <p>Quando a companhia oferece acordo, Sentinela compara com casos similares. Se estiver abaixo do mercado, alerta o advogado pra rejeitar. Maximiza valor.</p>
-        <div class="tech-card-stats">
-          <div class="tech-stat"><strong>Real-time</strong>alerta</div>
-          <div class="tech-stat"><strong>Auto</strong>rejeição</div>
-          <div class="tech-stat"><strong>Único</strong>moat</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section mistake">
+<!-- ADVOGADO AMIGO -->
+<section class="section mistake" id="advogados">
   <div class="wrap">
     <div class="section-header">
       <div class="mistake-warning">⚠ Erro mais comum</div>
       <h2>O passageiro perde a causa<br><span class="light">não pela lei. Pelo advogado errado.</span></h2>
-      <p>A maioria liga pro advogado amigo, primo, vizinho. Alguém que faz divórcio, trabalhista e criminal no mesmo dia. Acha que "qualquer advogado serve". Não serve.</p>
+      <p>A maioria liga pro advogado amigo, primo ou conhecido — alguém que faz divórcio, trabalhista e criminal no mesmo dia. Acha que "qualquer advogado serve". Não serve.</p>
     </div>
 
     <div class="mistake-comparison">
       <div class="mistake-col wrong">
         <div class="mistake-col-header">
           <div class="mistake-icon x">✕</div>
-          <h3>Advogado generalista<br><small>amigo, primo, vizinho</small></h3>
+          <h3>Advogado generalista<br><small>amigo, primo, conhecido</small></h3>
         </div>
         <ul class="mistake-list">
-          <li>Pega divórcio, trabalhista e criminal no mesmo dia. Não é especialista em nada.</li>
+          <li>Pega divórcio, trabalhista, criminal e aéreo no mesmo dia. Não é especialista em nada.</li>
           <li>Não conhece STJ Tema 210 nem 1213. Faz peça genérica que o juiz não leva a sério.</li>
-          <li>Não sabe usar VRA da ANAC. Pede só o cartão de embarque.</li>
+          <li>Não sabe usar VRA da ANAC como prova institucional. Pede só o cartão de embarque.</li>
           <li>Aceita primeiro acordo subvalorizado — sem base de comparação.</li>
-          <li>Procedência média 50–60%.</li>
+          <li>Procedência média: 50–60%.</li>
           <li>Quando ganha, fica 30–50% abaixo do potencial.</li>
         </ul>
       </div>
@@ -1400,9 +984,9 @@ footer .links a:hover{color:var(--ink);}
         <ul class="mistake-list">
           <li>Processa SÓ casos de companhia aérea. Mil casos atrás, mil pela frente.</li>
           <li>Domina STJ Tema 210 e 1213 de cor. Conhece cada precedente útil.</li>
-          <li>Usa ANAC VRA + FlightAware como prova oficial cruzada.</li>
+          <li>Usa ANAC VRA + FlightAware + Cirium como prova oficial cruzada.</li>
           <li>Sentinela™ alerta acordo subvalorizado. Nada passa.</li>
-          <li>Procedência média 87%.</li>
+          <li>Procedência média: 87%.</li>
           <li>Maximiza valor recuperado. Pede certo, com fundamentação certa.</li>
         </ul>
       </div>
@@ -1411,17 +995,18 @@ footer .links a:hover{color:var(--ink);}
     <div class="mistake-stat-box">
       <div class="label">A diferença na vida real</div>
       <div class="big">R$ 3.500 <span class="vs">vs</span> <span class="accent">R$ 8.200</span></div>
-      <p>Indenização média conseguida por advogado generalista vs especialista <strong style="color:white;">no mesmo tipo de caso</strong>. Mesma lei. Mesmo juiz. Resultado completamente diferente — porque execução jurídica é especialização, não improviso.</p>
+      <p>Indenização média conseguida por advogado generalista vs especialista <strong>no mesmo tipo de caso</strong>. Mesma lei. Mesmo juiz. Resultado completamente diferente — porque execução jurídica é especialização, não improviso.</p>
     </div>
   </div>
 </section>
 
+<!-- LAWYERS -->
 <section class="section lawyers">
   <div class="wrap">
     <div class="section-header">
       <div class="eyebrow">Advogados especialistas</div>
       <h2>Não é o advogado amigo.<br><span class="light">É o especialista em aviação.</span></h2>
-      <p>Rede curada de advogados que processam companhia aérea todos os dias. Mínimo 10 anos de experiência exclusiva em direito aéreo, 100+ ações por ano contra companhias, e procedência histórica acima de 80%.</p>
+      <p>Rede curada de advogados que processam companhia aérea todos os dias. Mínimo 10 anos de experiência exclusiva, 100+ ações por ano contra companhias, e procedência histórica acima de 80%.</p>
     </div>
 
     <div class="lawyer-cards">
@@ -1464,39 +1049,10 @@ footer .links a:hover{color:var(--ink);}
         </div>
       </div>
     </div>
-
-    <div class="metrics-grid" style="margin-top:64px;">
-      <div class="metric-card">
-        <div class="metric-num">99<span class="pct">%</span></div>
-        <div class="metric-label">casos com prova ANAC têm decisão favorável</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-num">87<span class="pct">%</span></div>
-        <div class="metric-label">procedência média da rede de especialistas</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-num">10<span style="font-size:32px;color:var(--gray);">m</span></div>
-        <div class="metric-label">tempo médio até decisão judicial</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-num">R$0</div>
-        <div class="metric-label">custo pro passageiro. Nem inicial, nem final</div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ============================
-     CAPÍTULO 05 — PROVA SOCIAL
-============================ -->
-<div class="chapter">
-  <div class="chapter-inner">
-    <span class="chapter-num">05</span>
-    <span class="chapter-line"></span>
-    <span class="chapter-name">Prova social</span>
-  </div>
-</div>
-
+<!-- TESTIMONIALS -->
 <section class="section testimonials">
   <div class="wrap">
     <div class="section-header">
@@ -1508,13 +1064,13 @@ footer .links a:hover{color:var(--ink);}
         <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-text">"Cadastrei o voo no checkout do Decolar e esqueci. Três meses depois recebi o dinheiro do voo cancelado da Latam. Não tive que fazer absolutamente nada."</div>
         <div class="testimonial-author">
-          <div class="testimonial-avatar" style="background-image:url('images/testimonial_marina.jpeg');background-size:cover;background-position:center;"></div>
+          <div class="testimonial-avatar" style="background-image:url('images/testimonial_marina.jpeg');"></div>
           <div class="testimonial-meta"><strong>Marina R.</strong><span>São Paulo · GRU → MIA</span></div>
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial-stars">★★★★★</div>
-        <div class="testimonial-text">"Voo da GOL atrasou 6 horas. Em casa, recebi um WhatsApp do advogado parceiro do Voou.ai dizendo que ia processar. Foi exatamente isso. Recebi a indenização sem mexer um dedo."</div>
+        <div class="testimonial-text">"Voo da GOL atrasou 6 horas. Em casa, recebi um WhatsApp do advogado parceiro do Voou.ai dizendo que ia processar. Recebi a indenização sem mexer um dedo."</div>
         <div class="testimonial-author">
           <div class="testimonial-avatar">JF</div>
           <div class="testimonial-meta"><strong>João F.</strong><span>Rio de Janeiro · GIG → POA</span></div>
@@ -1532,48 +1088,39 @@ footer .links a:hover{color:var(--ink);}
   </div>
 </section>
 
+<!-- BENEFITS -->
 <section class="section benefits">
   <div class="wrap">
     <div class="section-header">
       <div class="eyebrow">Por que Voou.ai</div>
-      <h2>Seus benefícios <span class="light">com a Voou.ai.</span></h2>
+      <h2>Cinco motivos <span class="light">pra começar agora.</span></h2>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
         <div class="benefit-icon-circle">⏱️</div>
         <h3>Rápido e efetivo</h3>
-        <p>Companhia aérea ignora a maioria dos pedidos. Voou.ai não desiste. Processamos formalmente em até 7 dias do trigger.</p>
+        <p>Companhia aérea ignora a maioria. Voou.ai não desiste. Processo formal em até 7 dias.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon-circle">📋</div>
         <h3>Sem burocracia</h3>
-        <p>Documentos jurídicos complexos? IA preenche tudo. Você só fornece a foto do email ou cartão de embarque.</p>
+        <p>Documentos jurídicos complexos? IA preenche tudo. Você só fornece a foto.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon-circle">🎯</div>
-        <h3>Alta taxa de sucesso</h3>
-        <p>Custas judiciais por nossa conta. Procedência média de 87% com a rede de especialistas. Risco zero pra você.</p>
+        <h3>Risco zero</h3>
+        <p>Custas judiciais por nossa conta. Você não paga nada se perdermos.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon-circle">😌</div>
         <h3>Sem estresse</h3>
-        <p>3 fotos rápidas, cuidamos de tudo. Você nem precisa abrir o app de novo se não quiser. Volta a sua vida normal.</p>
+        <p>3 fotos rápidas, cuidamos de tudo. Você nem precisa abrir o app de novo.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================
-     CAPÍTULO 06 — AÇÃO
-============================ -->
-<div class="chapter">
-  <div class="chapter-inner">
-    <span class="chapter-num">06</span>
-    <span class="chapter-line"></span>
-    <span class="chapter-name">Ação</span>
-  </div>
-</div>
-
+<!-- FAQ -->
 <section class="section faq" id="faq">
   <div class="wrap">
     <div class="faq-grid">
@@ -1589,11 +1136,11 @@ footer .links a:hover{color:var(--ink);}
         </div>
         <div class="faq-item">
           <div class="faq-q">Quanto tempo demora pra receber?</div>
-          <div class="faq-a">Tempo médio até decisão judicial: 10 meses. Depois disso, mais 30-60 dias até pagamento efetivo. Acompanhamos tudo pelo app.</div>
+          <div class="faq-a">Tempo médio até decisão judicial: 10 meses. Depois disso, mais 30-60 dias até pagamento efetivo.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Vou ter que ir em audiência?</div>
-          <div class="faq-a">Geralmente não. O advogado especialista te representa. Em casos raros (audiência presencial obrigatória), avisamos com antecedência.</div>
+          <div class="faq-a">Geralmente não. O advogado especialista te representa. Em casos raros, avisamos com antecedência.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">E se eu não tiver direito?</div>
@@ -1601,32 +1148,34 @@ footer .links a:hover{color:var(--ink);}
         </div>
         <div class="faq-item">
           <div class="faq-q">Voo internacional também serve?</div>
-          <div class="faq-a">Sim. Voo internacional segue Convenção de Montreal — prazo de 2 anos. Indenizações tendem a ser maiores. Temos especialistas internacionais.</div>
+          <div class="faq-a">Sim. Voo internacional segue Convenção de Montreal — prazo de 2 anos. Indenizações tendem a ser maiores.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">É legal vocês fazerem isso?</div>
-          <div class="faq-a">100%. Voou.ai é plataforma de tecnologia (Lei 4.886/65), não escritório. Conformidade total com Art. 35 EOAB, Provimento 205/2021 CFOAB e LGPD.</div>
+          <div class="faq-a">100%. Voou.ai é plataforma de tecnologia (Lei 4.886/65), não escritório. Conformidade total com Art. 35 EOAB e LGPD.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Como sabem que meu voo atrasou?</div>
-          <div class="faq-a">Triangulamos FlightAware, Cirium e ANAC SIROS — todas APIs oficiais. O avião transmite via ADS-B sua posição em tempo real, cruzada com horário programado.</div>
+          <div class="faq-a">Triangulamos FlightAware, Cirium e ANAC SIROS. O avião transmite via ADS-B sua posição em tempo real, cruzada com horário programado.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Posso cadastrar voos antigos?</div>
-          <div class="faq-a">Sim. Pelo CDC, prazo prescricional para voos domésticos é 5 anos. Para internacionais, 2 anos. Voos antigos têm conversão menor mas ainda valem.</div>
+          <div class="faq-a">Sim. Pelo CDC, prazo prescricional para voos domésticos é 5 anos. Internacionais, 2 anos.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PAYOFF -->
 <section class="section payoff">
   <div class="wrap">
     <div class="testimonial-quote">"Recebi o dinheiro<br>e <span class="accent">nem lembrava</span><br>que tinha cadastrado."</div>
-    <div class="testimonial-author-big">— A jornada típica do passageiro Voou.ai</div>
+    <div style="font-size:14px;color:var(--gray);">— A jornada típica do passageiro Voou.ai</div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="section cta-final" id="cadastrar">
   <h2>Cadastre seu próximo voo. <em>Vale para sempre.</em></h2>
   <p>Custa zero. Demora 30 segundos. Pode salvar até R$ 12.000 que você nem sabia que era seu.</p>
